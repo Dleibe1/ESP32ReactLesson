@@ -8,12 +8,6 @@ import microcontroller
 led = digitalio.DigitalInOut(board.D2)  # Onboard blue LED
 led.direction = digitalio.Direction.OUTPUT
 
-# Connect to WiFi
-# print("Connecting to WiFi...")
-# wifi.radio.connect("your_SSID", "your_PASSWORD")
-# print("Connected to WiFi!")
-# print("IP address:", wifi.radio.ipv4_address)
-
 # Create a server socket on port 8080
 pool = socketpool.SocketPool(wifi.radio)
 sock = pool.socket(pool.AF_INET, pool.SOCK_STREAM)
@@ -30,22 +24,22 @@ while True:
     request_str = str(buffer[:bytes_read], 'utf-8')
     print("Request:", request_str)
 
-    # If we receive the message "led_on"
-    if 'GET /led_on' in request_str:
+    #If we receive the message "led_on"
+    if 'POST /led_on' in request_str:
         
-        # Your Code Here:
+        #Your code here:
         led.value = True
-        # #End Your Code
-        
+        #End your code
+
+        #Send a message back: "LED is now ON"
         response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now ON"
-        
-        # If we receive the message "led_off"
-    elif 'GET /led_off' in request_str:
-        
-        # Your Code Here:
+    elif 'POST /led_off' in request_str:
+
+        #Your code here:
         led.value = False
-        # #End Your Code
-        
+        ##End your code
+
+        #Send a message back: "LED is now OFF"
         response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now OFF"
     else:
         response = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\nPage not found"
