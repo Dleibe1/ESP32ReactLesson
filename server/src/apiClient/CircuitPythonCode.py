@@ -30,11 +30,22 @@ while True:
     request_str = str(buffer[:bytes_read], 'utf-8')
     print("Request:", request_str)
 
+    # If we receive the message "led_on"
     if 'GET /led_on' in request_str:
+        
+        # Your Code Here:
         led.value = True
+        # #End Your Code
+        
         response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now ON"
+        
+        # If we receive the message "led_off"
     elif 'GET /led_off' in request_str:
+        
+        # Your Code Here:
         led.value = False
+        # #End Your Code
+        
         response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now OFF"
     else:
         response = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\nPage not found"
