@@ -1,22 +1,13 @@
 
 import got from "got"
 
-const esp32Test = () => {
-    return "test"
-    // try {
-    //   const response = await got.get("https://api.github.com/user/repos", {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //       Accept: "application/json",
-    //     },
-    //     responseType: "json",
-    //   })
-
-    //   return response.body
-    // } catch (error) {
-    //   console.error("Error fetching repositories:", error)
-    //   throw error
-    // }
+const esp32Test = async () => {
+  try {
+      const response = await got('http://192.168.1.134:8080/led_on');
+      return response.body
+  } catch (error) {
+      console.log(error);
   }
+}
 
 export default esp32Test

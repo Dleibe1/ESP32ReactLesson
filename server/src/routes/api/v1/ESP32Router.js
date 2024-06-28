@@ -4,9 +4,8 @@ import esp32Test from "../../../apiClient/ESP32Client.js";
 const ESP32Router = new express.Router();
 
 ESP32Router.get("/", async (req, res) => {
-  const response = esp32Test()
-  console.log(response)
-  return res.status(201).json( {ESP32response: response });
+  const response = await esp32Test()
+  return res.status(201).json( {ESP32ResponseMessage: response });
 });
 
 export default ESP32Router

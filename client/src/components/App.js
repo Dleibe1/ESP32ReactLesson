@@ -4,12 +4,6 @@ import { hot } from "react-hot-loader/root";
 
 import "../assets/scss/main.scss";
 
-import getCurrentUser from "../services/getCurrentUser";
-
-import RegistrationForm from "./registration/RegistrationForm";
-import SignInForm from "./authentication/SignInForm";
-import TopBar from "./layout/TopBar";
-
 const App = (props) => {
 
   const [infoFromESP32, setInfoFromESP32] = useState(undefined);
@@ -17,7 +11,8 @@ const App = (props) => {
   const fetchESP32Data = async () => {
     const response = await fetch("/api/v1/ESP32");
     const ESP32ResponseData = await response.json()
-    setInfoFromESP32(ESP32ResponseData.ESP32response)
+    const messageFromESP32 = ESP32ResponseData.ESP32ResponseMessage
+    setInfoFromESP32(messageFromESP32)
   };
 
   useEffect(() => {
