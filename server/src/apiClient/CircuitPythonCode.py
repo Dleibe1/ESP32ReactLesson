@@ -25,7 +25,7 @@ while True:
     print("Request:", request_str)
 
     #If we receive the message "led_on"
-    if 'POST /led_on' in request_str:
+    if 'GET /led_on' in request_str:
         
         #Your code here:
         led.value = True
@@ -33,7 +33,7 @@ while True:
 
         #Send a message back: "LED is now ON"
         response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now ON"
-    elif 'POST /led_off' in request_str:
+    elif 'GET /led_off' in request_str:
 
         #Your code here:
         led.value = False
