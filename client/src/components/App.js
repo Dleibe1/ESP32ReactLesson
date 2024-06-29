@@ -1,28 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { hot } from "react-hot-loader/root"
-// import message from "./message"
+import MessageSendingWebpage from "./MessageSendingWebpage"
 
 import "../assets/scss/main.scss"
-
-
-
-
-
-//Student code here:
-const myMessage = "led_on"
-
-
-//End student code
-
-
-
-
 
 const App = (props) => {
   const [infoFromESP32, setInfoFromESP32] = useState(undefined)
 
-  const communicateWithESP32 = async (message) => {
+  const sendMessage = async (message) => {
     const response = await fetch("/api/v1/ESP32", {
       method: "POST",
       headers: {
@@ -35,18 +21,13 @@ const App = (props) => {
     setInfoFromESP32(messageFromESP32)
   }
 
+  console.log(infoFromESP32)
+// Try changing the path
   return (
     <Router>
-      <Switch>
+      <Switch> 
         <Route exact path="/">
-          <h2>Response from ESP32 somewhere else on earth: {infoFromESP32}</h2>
-          <h2
-            onClick={() => {
-              communicateWithESP32(myMessage)
-            }}
-          >
-            Send message to ESP32
-          </h2>
+          <MessageSendingWebpage receivedMessage={infoFromESP32} sendMessage={sendMessage} />
         </Route>
       </Switch>
     </Router>
