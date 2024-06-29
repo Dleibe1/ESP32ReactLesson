@@ -31,14 +31,7 @@ const App = (props) => {
               communicateWithESP32(message)
             }}
           >
-            Click to turn on LED
-          </h2>
-          <h2
-            onClick={() => {
-              communicateWithESP32("led_off")
-            }}
-          >
-            Click to turn off LED
+            Send message to ESP32
           </h2>
         </Route>
       </Switch>

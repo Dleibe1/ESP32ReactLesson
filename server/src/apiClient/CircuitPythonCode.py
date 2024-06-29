@@ -27,20 +27,22 @@ while True:
     #If we receive the message "led_on"
     if 'GET /led_on' in request_str:
         
-        #Your code here:
+        #Student code here:
         led.value = True
-        #End your code
+        #End student code
 
         #Send a message back: "LED is now ON"
         response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now ON"
     elif 'GET /led_off' in request_str:
 
-        #Your code here:
+        #Student code here:
         led.value = False
-        ##End your code
+        ##End student code
 
         #Send a message back: "LED is now OFF"
         response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now OFF"
+
+    #If you sent a message I don't know what to do with:
     else:
         response = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\nPage not found"
 
