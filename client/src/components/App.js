@@ -1,20 +1,34 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { hot } from "react-hot-loader/root"
-import message from "./message"
+// import message from "./message"
 
 import "../assets/scss/main.scss"
+
+
+
+
+
+//Student code here:
+const myMessage = "led_on"
+
+
+//End student code
+
+
+
+
 
 const App = (props) => {
   const [infoFromESP32, setInfoFromESP32] = useState(undefined)
 
-  const communicateWithESP32 = async (command) => {
+  const communicateWithESP32 = async (message) => {
     const response = await fetch("/api/v1/ESP32", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ command: command }),
+      body: JSON.stringify({ message: message }),
     })
     const ESP32ResponseData = await response.json()
     const messageFromESP32 = ESP32ResponseData.ESP32ResponseMessage
@@ -28,7 +42,7 @@ const App = (props) => {
           <h2>Response from ESP32 somewhere else on earth: {infoFromESP32}</h2>
           <h2
             onClick={() => {
-              communicateWithESP32(message)
+              communicateWithESP32(myMessage)
             }}
           >
             Send message to ESP32

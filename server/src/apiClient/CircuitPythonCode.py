@@ -12,6 +12,7 @@ led.direction = digitalio.Direction.OUTPUT
 pool = socketpool.SocketPool(wifi.radio)
 sock = pool.socket(pool.AF_INET, pool.SOCK_STREAM)
 sock.bind(('0.0.0.0', 8080))
+# sock.bind(('0.0.0.0', 8081))
 sock.listen(1)
 
 print("Server listening on port 8080")
@@ -24,6 +25,15 @@ while True:
     request_str = str(buffer[:bytes_read], 'utf-8')
     print("Request:", request_str)
 
+
+
+
+
+
+
+
+    
+
     #If we receive the message "led_on"
     if 'GET /led_on' in request_str:
         
@@ -32,7 +42,7 @@ while True:
         #End student code
 
         #Send a message back: "LED is now ON"
-        response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now ON"
+        response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED is now OFF"
     elif 'GET /led_off' in request_str:
 
         #Student code here:
