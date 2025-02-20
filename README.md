@@ -5,7 +5,7 @@ The files to look at are:
 
 [server/src/routes/rootRouter.js](server/src/routes/rootRouter.js)
 
-The circuitpython files can be found here:
+The circuitpython files to save onto the ESP32 can be found here:
 [server/src/apiClient](server/src/apiClient)
 
 This is a project I got working then never used with students...
