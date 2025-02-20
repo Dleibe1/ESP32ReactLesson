@@ -1,4 +1,4 @@
-Lesson for students on Post Requests using a webserver on an Esp32 running circuitpython
+Lesson I quickyly threw together for students on Post Requests using a webserver on an Esp32 running circuitpython
 The files to look at are:
 
 [server/src/routes/api/v1/ESP32Router.js](server/src/routes/api/v1/ESP32Router.js)
